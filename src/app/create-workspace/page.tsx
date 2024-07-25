@@ -33,25 +33,29 @@ function Workspace() {
   };
 
   useEffect(() => {
-    const checkWorkspace = async () => {
+    const CreateorVerifyUser = async () => {
       try {
         if (session) {
-          const response = await axios.get("/api/check-workspace");
+          const response = await axios.post("/api/oauth", {
+            name: session?.user?.name,
+            email: session?.user?.email,
+            profile: session?.user?.image,
+          });
           const { data } = response;
           if (data.success) {
-            if (data.myWorkspace) {
+            if (data?.user?.workspaceId) {
               router.push("/my-workspace");
             } else {
               setIsLoading(false);
             }
           }
         }
-      } catch (error) {
+      } catch (error: any) {
         console.error("Error:", error);
       }
     };
 
-    checkWorkspace();
+    CreateorVerifyUser();
   }, [session, router]);
 
   const createWorkspace = async () => {

@@ -59,11 +59,6 @@ export function getMenuList(pathname: string): Group[] {
               label: "Post 1",
               active: pathname.includes("/post-1"),
             },
-            {
-              href: "/my-workspace/my-files/post-2",
-              label: "Post 2",
-              active: pathname.includes("/post-2"),
-            },
           ],
         },
       ],
@@ -81,11 +76,6 @@ export function getMenuList(pathname: string): Group[] {
               href: "/my-workspace/teams/team-1",
               label: "Team 1",
               active: pathname.includes("/team-1"),
-            },
-            {
-              href: "/my-workspace/teams/team-2",
-              label: "Team 2",
-              active: pathname.includes("/team-2"),
             },
           ],
         },

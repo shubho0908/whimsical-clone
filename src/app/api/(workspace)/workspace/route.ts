@@ -40,6 +40,11 @@ export const POST = async (req: NextRequest): Promise<NextResponse> => {
     //Create user workspace
     const workspace = await WorkspaceModel.create({ name, userId: user._id });
 
+    await UserModel.updateOne(
+      { _id: user._id },
+      { workspaceId: workspace._id }
+    );
+
     //Add user as a member of the workspace
     await MemberModel.create({
       userId: user._id,

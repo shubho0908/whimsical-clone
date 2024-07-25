@@ -125,8 +125,10 @@ function Page({ params }: { params: { workspaceId: string[] } }) {
         });
         const { data } = response;
         if (data.success) {
-          setSelectedRole(newRole);
           successToast();
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500);
         }
       }
     } catch (error) {
@@ -370,8 +372,9 @@ function Page({ params }: { params: { workspaceId: string[] } }) {
                     className="invitation shadow rounded p-5 my-2 bg-gray-50"
                   >
                     <p className="font-light">
-                      {invitation?.inviterId?.name} ({invitation?.inviterId?.email})
-                      invited {invitation?.invitedEmail}
+                      {invitation?.inviterId?.name} (
+                      {invitation?.inviterId?.email}) invited{" "}
+                      {invitation?.invitedEmail}
                     </p>
                   </div>
                 ))}

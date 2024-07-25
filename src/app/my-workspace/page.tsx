@@ -5,34 +5,14 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { User } from "@/models/user.models";
 import Loader from "@/lib/Loader";
 
 export default function DashboardPage() {
   const { data: session } = useSession();
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [user, setUser] = useState<User | null>(null);
   const router = useRouter();
 
   useEffect(() => {
-    const CreateorVerifyUser = async () => {
-      try {
-        if (session) {
-          const response = await axios.post("/api/oauth", {
-            name: session?.user?.name,
-            email: session?.user?.email,
-            profile: session?.user?.image,
-          });
-          const { data } = response;
-          if (data.success) {
-            setUser(data.user);
-          }
-        }
-      } catch (error: any) {
-        console.error("Error:", error);
-      }
-    };
-
     const checkWorkspace = async () => {
       try {
         if (session) {
@@ -51,7 +31,6 @@ export default function DashboardPage() {
       }
     };
 
-    CreateorVerifyUser();
     checkWorkspace();
   }, [session, router]);
 

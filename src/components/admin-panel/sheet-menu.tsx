@@ -43,10 +43,10 @@ export function SheetMenu() {
             variant="link"
             asChild
           >
-            <Link href="/dashboard" className="flex items-center gap-2">
+            <div className="flex items-center gap-2">
               <BsPersonWorkspace className="mr-2" fontSize={22} />
               <h1 className="font-bold text-lg">{workspaceData?.name}</h1>
-            </Link>
+            </div>
           </Button>
         </SheetHeader>
         <Menu isOpen />

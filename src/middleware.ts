@@ -21,11 +21,15 @@ export async function middleware(req: Request) {
   }
 
   if (session && pathname === "/") {
-    return NextResponse.redirect(new URL("/my-workspace", req.url));
+    return NextResponse.redirect(new URL("/create-workspace", req.url));
   }
 
   if (session && authRoutes.has(pathname)) {
-    return NextResponse.redirect(new URL("/my-workspace", req.url));
+    return NextResponse.redirect(new URL("/create-workspace", req.url));
+  }
+
+  if (session && pathname === "/my-workspace") {
+    return NextResponse.redirect(new URL("/my-workspace/recent", req.url));
   }
 
   return NextResponse.next();

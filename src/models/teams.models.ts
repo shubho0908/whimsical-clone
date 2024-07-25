@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-interface Team {
+export interface Team {
   name: string;
   userId: string;
   workspaceId: string;

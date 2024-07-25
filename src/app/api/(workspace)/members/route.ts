@@ -92,25 +92,21 @@ export const PATCH = async (req: NextRequest): Promise<NextResponse> => {
       );
     }
 
-    if (user._id.toString() === member.userId) {
-      return NextResponse.json(
-        { success: false, error: "You cannot update your own role" },
-        { status: 400 }
-      );
-    }
-
-    //Check if the user and member are in same workspace
-    if (member.workspaceId !== workspaceId) {
+    // Check if the user and member are in the same workspace
+    if (member.workspaceId.toString() !== workspaceId) {
       return NextResponse.json(
         { success: false, error: "User is not a part of the workspace" },
         { status: 400 }
       );
     }
 
-    //Check if the user is an admin
-    if (myself.role !== "admin") {
+    // Check if the user is an admin or owns the workspace
+    const isAdmin = myself.role === "admin";
+    const isWorkspaceOwner = user.workspaceId && user.workspaceId.toString() === workspaceId;
+
+    if (!isAdmin && !isWorkspaceOwner) {
       return NextResponse.json(
-        { success: false, error: "You are not an admin" },
+        { success: false, error: "You don't have permission to update member roles" },
         { status: 403 }
       );
     }

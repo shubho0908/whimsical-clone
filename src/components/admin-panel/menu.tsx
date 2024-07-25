@@ -129,50 +129,48 @@ export function Menu({ isOpen }: MenuProps) {
             </li>
           ))}
           <li className="w-full grow flex flex-col items-end justify-end">
-            <Button
-              onClick={() => {
-                router.push("/my-workspace/templates-and-themes");
-              }}
-              variant={
-                pathname === "/my-workspace/templates-and-themes"
-                  ? "secondary"
-                  : "ghost"
-              }
-              className="w-full justify-start h-10 mb-2"
-            >
-              <span className={cn(isOpen === false ? "" : "mr-4")}>
-                <LuLayoutTemplate size={18} />
-              </span>
-              <p
-                className={cn(
-                  "whitespace-nowrap",
-                  isOpen === false ? "opacity-0 hidden" : "opacity-100"
-                )}
+            <FeatureComingSoon>
+              <Button
+                variant={
+                  pathname === "/my-workspace/templates-and-themes"
+                    ? "secondary"
+                    : "ghost"
+                }
+                className="w-full justify-start h-10 mb-2"
               >
-                Templates and themes
-              </p>
-            </Button>
-            <Button
-              onClick={() => {
-                router.push("/my-workspace/trash");
-              }}
-              variant={
-                pathname === "/my-workspace/trash" ? "secondary" : "ghost"
-              }
-              className="w-full justify-start h-10"
-            >
-              <span className={cn(isOpen === false ? "" : "mr-4")}>
-                <RiDeleteBin6Line size={18} />
-              </span>
-              <p
-                className={cn(
-                  "whitespace-nowrap",
-                  isOpen === false ? "opacity-0 hidden" : "opacity-100"
-                )}
+                <span className={cn(isOpen === false ? "" : "mr-4")}>
+                  <LuLayoutTemplate size={18} />
+                </span>
+                <p
+                  className={cn(
+                    "whitespace-nowrap",
+                    isOpen === false ? "opacity-0 hidden" : "opacity-100"
+                  )}
+                >
+                  Templates and themes
+                </p>
+              </Button>
+            </FeatureComingSoon>
+            <FeatureComingSoon>
+              <Button
+                variant={
+                  pathname === "/my-workspace/trash" ? "secondary" : "ghost"
+                }
+                className="w-full justify-start h-10"
               >
-                Trash
-              </p>
-            </Button>
+                <span className={cn(isOpen === false ? "" : "mr-4")}>
+                  <RiDeleteBin6Line size={18} />
+                </span>
+                <p
+                  className={cn(
+                    "whitespace-nowrap",
+                    isOpen === false ? "opacity-0 hidden" : "opacity-100"
+                  )}
+                >
+                  Trash
+                </p>
+              </Button>
+            </FeatureComingSoon>
           </li>
         </ul>
       </nav>

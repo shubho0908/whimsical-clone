@@ -67,7 +67,7 @@ function Invitation({ params }: { params: { workspaceId: string[] } }) {
         <Button
           variant="secondary"
           onClick={() => {
-            window.location.href = `/workspace/members/${params.workspaceId[0]}`;
+            window.location.href = `/workspace/members/${params?.workspaceId[0]}`;
           }}
           className="rounded-sm absolute m-5 flex items-center justify-center bg-white/40 hover:bg-white/20 transition-all text-white"
         >
@@ -81,7 +81,7 @@ function Invitation({ params }: { params: { workspaceId: string[] } }) {
             <div className="btns w-full flex items-center justify-evenly my-6">
               <Button
                 onClick={() => {
-                  window.location.href = `/workspace/members/${params.workspaceId[0]}`;
+                  window.location.href = `/workspace/members/${params?.workspaceId[0]}`;
                 }}
                 className="w-[200px] p-6 rounded-sm text-lg bg-[#31B6A8] hover:bg-[#31B6A8]/80 transition-all"
               >
@@ -106,7 +106,7 @@ function Invitation({ params }: { params: { workspaceId: string[] } }) {
       <Button
         variant="secondary"
         onClick={() => {
-          router.push(`/workspace/members/${params.workspaceId[0]}`);
+          window.location.href = `/workspace/members/${params?.workspaceId[0]}`;
         }}
         className="rounded-sm absolute m-5 flex items-center justify-center bg-white/40 hover:bg-white/20 transition-all text-white"
       >
