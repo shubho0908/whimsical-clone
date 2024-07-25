@@ -108,7 +108,7 @@ export function Sidebar() {
               <div className="menu leading-10">
                 <div
                   onClick={() => {
-                    router.push(`/workspace/invite/${workspaceData?._id}`);
+                    window.location.href = `/workspace/invite/${workspaceData?._id}`;
                   }}
                   className="invite px-2 flex items-center justify-start hover:bg-[#1AAE9F] hover:rounded cursor-pointer transition-all"
                 >
@@ -117,7 +117,7 @@ export function Sidebar() {
                 </div>
                 <div
                   onClick={() => {
-                    router.push(`/workspace/members/${workspaceData?._id}`);
+                    window.location.href = `/workspace/members/${workspaceData?._id}`;
                   }}
                   className="members px-2 flex items-center justify-start hover:bg-[#1AAE9F] hover:rounded cursor-pointer transition-all"
                 >
