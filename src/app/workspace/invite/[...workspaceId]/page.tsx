@@ -4,7 +4,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Workspace } from "@/models/workspace.models";
 import axios from "axios";
-import { Link } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaChevronLeft, FaCircleCheck } from "react-icons/fa6";
@@ -80,13 +79,14 @@ function Invitation({ params }: { params: { workspaceId: string[] } }) {
             <p className="text-xl">Your invitation has been sent!</p>
             <p>You&apos;ve invited 1 person to {workspaceData?.name}.</p>
             <div className="btns w-full flex items-center justify-evenly my-6">
-              <Link href={`/workspace/members/${params.workspaceId[0]}`}>
-                {" "}
-                <Button className="w-[200px] p-6 rounded-sm text-lg bg-[#31B6A8] hover:bg-[#31B6A8]/80 transition-all">
-                  Done
-                </Button>
-              </Link>
-
+              <Button
+                onClick={() => {
+                  window.location.href = `/workspace/members/${params.workspaceId[0]}`;
+                }}
+                className="w-[200px] p-6 rounded-sm text-lg bg-[#31B6A8] hover:bg-[#31B6A8]/80 transition-all"
+              >
+                Done
+              </Button>
               <Button
                 onClick={() => setIsInviteSent(false)}
                 className="w-[200px] text-[#31B6A8] p-6 rounded-sm text-lg border border-[#C3CFD9] hover:text-[#31B6A8]"
