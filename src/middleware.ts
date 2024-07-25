@@ -16,6 +16,14 @@ export async function middleware(req: Request) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
 
+  if (!session && pathname === "/") {
+    return NextResponse.redirect(new URL("/login", req.url));
+  }
+
+  if (session && pathname === "/") {
+    return NextResponse.redirect(new URL("/my-workspace", req.url));
+  }
+
   if (session && authRoutes.has(pathname)) {
     return NextResponse.redirect(new URL("/my-workspace", req.url));
   }
